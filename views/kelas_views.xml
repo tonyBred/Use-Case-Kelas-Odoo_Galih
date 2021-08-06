@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- VIEW -->
+
+        <!-- List View -->
+        <record model="ir.ui.view" id="kelas_kelas_tree">
+            <field name="name">kelas.kelas.tree</field>
+            <field name="model">kelas.kelas</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="wali_kelas"/>
+                    <field name="matkul_ids"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="kelas_kelas_form">
+            <field name="name">kelas.kelas.form</field>
+            <field name="model">kelas.kelas</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="partner_id">
+                                    <tree>
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                                <field name="wali_kelas"/>
+                                <field name="matkul_ids"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Kanban View -->
+        <record id="kelas_kelas_kanban" model="ir.ui.view">
+            <field name="name">kelas.kelas.kanban</field>
+            <field name="model">kelas.kelas</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name = "name"/>
+                    <field name = "wali_kelas"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                                Nama Kelas: <field name="name"/><br></br>
+                                Wali Kelas: <field name="wali_kelas"/>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+
+        <!-- Action Kelas -->
+        <record model="ir.actions.act_window" id="kelas_kelas_action">
+            <field name="name">Kelas di Polban</field>
+            <field name="res_model">kelas.kelas</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <!-- Action Dosen -->
+        <record model="ir.actions.act_window" id="partner_dosen_action">
+            <field name="name">Dosen - Dosen di Polban</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_dosen', '=', True)]</field>
+        </record>
+
+        <!-- Action Mahasiswa -->
+        <record model="ir.actions.act_window" id="partner_mahasiswa_action">
+            <field name="name">Mahasiswa di Polban</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_dosen', '=', False)]</field>
+        </record>
+
+        <menuitem 
+            id="main_kelas_kelas"
+            name="Kelas"
+        />
+
+        <menuitem 
+            id="submenu_kelas_kelas"
+            name="Kelas"
+            parent="main_kelas_kelas"
+            sequence="1"
+            action="kelas_kelas_action"
+        />
+
+        <menuitem 
+            id="submenu_mata_kuliah"
+            name="Mata Kuliah"
+            parent="main_kelas_kelas"
+            sequence="2"
+            action="mata_kuliah_action"
+        />
+
+
+        <menuitem 
+            id="submenu_warga_polban"
+            name="Warga Polban"
+            parent="main_kelas_kelas"
+            sequence="3"
+        />
+
+        <menuitem 
+            id="submenu_partner_dosen"
+            name="Dosen"
+            parent="submenu_warga_polban"
+            sequence="1"
+            action="partner_dosen_action"
+        />
+
+        <menuitem 
+            id="submenu_partner_mahasiswa"
+            name="Mahasiswa"
+            parent="submenu_warga_polban"
+            sequence="2"
+            action="partner_mahasiswa_action"
+        />
+
+        <menuitem 
+            id="submenu_partner_dosen_contact"
+            name="Dosen"
+            parent="contacts.menu_contacts"
+            sequence="3"
+            action="partner_dosen_action"
+        />
+        
+
+    </data>
+</odoo>
