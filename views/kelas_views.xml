@@ -66,6 +66,7 @@
             </field>
         </record>
 
+
         <!-- ACTION -->
 
         <!-- Action Kelas -->
@@ -90,6 +91,9 @@
             <field name="view_mode">tree,form</field>
             <field name="domain">[('is_dosen', '=', False)]</field>
         </record>
+
+
+        <!-- Menu Item -->
 
         <menuitem 
             id="main_kelas_kelas"
@@ -135,6 +139,9 @@
             sequence="2"
             action="partner_mahasiswa_action"
         />
+
+
+        <!-- Menu Item Action -->
 
         <menuitem 
             id="submenu_partner_dosen_contact"
