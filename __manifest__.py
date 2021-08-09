@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'contacts'],
 
     # always loaded
     'data': [
@@ -28,6 +28,8 @@
         'views/matkul_views.xml',
         'views/views.xml',
         'views/templates.xml',
+        'reports/list_matkul_report.xml',
+        'reports/list_matkul_templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

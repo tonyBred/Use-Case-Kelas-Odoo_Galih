@@ -49,7 +49,7 @@
                     <field name = "kode"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div>
+                            <div  class="oe_kanban_card oe_kanban_global_click oe_kanban_color_5">
                                 Nama Matkul: <field name="name"/><br></br>
                                 Kode Matkul: <field name="kode"/>
                             </div>

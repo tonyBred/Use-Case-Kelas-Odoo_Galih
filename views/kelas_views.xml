@@ -56,7 +56,7 @@
                     <field name = "wali_kelas"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div>
+                            <div class="oe_kanban_card oe_kanban_global_click oe_kanban_color_1">
                                 Nama Kelas: <field name="name"/><br></br>
                                 Wali Kelas: <field name="wali_kelas"/>
                             </div>
@@ -141,7 +141,7 @@
         />
 
 
-        <!-- Menu Item Action -->
+        <!-- Menu Item -->
 
         <menuitem 
             id="submenu_partner_dosen_contact"

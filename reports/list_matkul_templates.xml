@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="list_matkul_templates">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+
+                        <h1>Report</h1><br></br>
+
+                        <p><center><img t-if="doc.image_1920" t-att-src="image_data_uri(doc.image_1920)" alt="Logo"/></center></p>
+
+                        <br></br><br></br>
+                        <p>Nama: <t t-esc="doc.name" /></p>
+                        <p>Kelas: <t t-esc="doc.kelas_id.name" /></p>
+                        <p>Umur: <t t-esc="doc.age" /></p>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Mata Kuliah</th>
+                                    <th>Kode</th>
+                                    <th>Dosen Pengampu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.kelas_id.matkul_ids" t-as="matkul" >
+                                    <td>
+                                        <span t-field="matkul.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="matkul.kode"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="matkul.partner_id.name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
